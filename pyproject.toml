@@ -1,0 +1,12 @@
+[project]
+name = "viam_audioout"
+version = "0.0.1"
+authors = [
+  { name="Matt Vella", email="mcvella@gmail.com" },
+]
+description = "Viam modular service that provides audio output capabilities"
+readme = "README.md"
+requires-python = ">=3.7"
+
+[project.urls]
+"Homepage" = "https://github.com/viam-labs/audioout"
