@@ -37,15 +37,17 @@ class audioout_pygame(Audioout, Reconfigurable):
         self.mic_device_name = config.attributes.fields["mic_device_name"].string_value or ""
         return
 
-    async def play(self, file_path: str, loop_count: int, maxtime_ms: int, fadein_ms: int) -> str:
+    async def play(self, file_path: str, loop_count: int, maxtime_ms: int, fadein_ms: int, block: bool) -> str:
+        LOGGER.info("Will play audio, blocking: " + str(block))
         try:
             if os.path.isfile(file_path):
                 mixer.music.load(file_path) 
                 mixer.music.play(loop_count, maxtime_ms, fadein_ms)
 
-                while mixer.music.get_busy():
-                    pygame.time.Clock().tick()
-                
+                if block == True:
+                    while mixer.music.get_busy():
+                        pygame.time.Clock().tick()
+                        
                 LOGGER.info("Played audio...")
             else:
                 raise ValueError("Specified file path not found")

@@ -17,7 +17,7 @@ sudo apt-get install flac
 
 The audioout resource provides the following API:
 
-### play(file_path=*string*, loop_count=*int*(0), maxtime_ms=*int*(0), fadein_ms=*int*(0))
+### play(file_path=*string*, loop_count=*int*(0), maxtime_ms=*int*(0), fadein_ms=*int*(0), block=*bool*)
 
 The *play()* command takes:
 
@@ -25,6 +25,7 @@ The *play()* command takes:
 * loop_count: How many times to play the audio file.  0 means once, -1 will loop infinitely (until stop() is called).
 * maxtime_ms: How long to play the audio for.  Note that some file types like .wav do not support time indexing so this will fail.
 * fadein_ms: If non-zero, will make the sound start playing at 0 volume and fade up to full volume over the time given. The sample may end before the fade-in is complete.
+* block: If False, will play sound async.  If true, will not return until sound is complete.
 
 This method returns a string response, which is the file_path that was passed in to the *play()* request.
 

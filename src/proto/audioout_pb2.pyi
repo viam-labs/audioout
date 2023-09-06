@@ -23,11 +23,13 @@ class PlayRequest(google.protobuf.message.Message):
     LOOP_COUNT_FIELD_NUMBER: builtins.int
     MAXTIME_MS_FIELD_NUMBER: builtins.int
     FADEIN_MS_FIELD_NUMBER: builtins.int
+    BLOCK_FIELD_NUMBER: builtins.int
     name: builtins.str
     file_path: builtins.str
     loop_count: builtins.int
     maxtime_ms: builtins.int
     fadein_ms: builtins.int
+    block: builtins.bool
     def __init__(
         self,
         *,
@@ -36,8 +38,9 @@ class PlayRequest(google.protobuf.message.Message):
         loop_count: builtins.int = ...,
         maxtime_ms: builtins.int = ...,
         fadein_ms: builtins.int = ...,
+        block: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["fadein_ms", b"fadein_ms", "file_path", b"file_path", "loop_count", b"loop_count", "maxtime_ms", b"maxtime_ms", "name", b"name"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["block", b"block", "fadein_ms", b"fadein_ms", "file_path", b"file_path", "loop_count", b"loop_count", "maxtime_ms", b"maxtime_ms", "name", b"name"]) -> None: ...
 
 global___PlayRequest = PlayRequest
 

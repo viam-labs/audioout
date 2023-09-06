@@ -24,6 +24,7 @@ message PlayRequest {
   int32 loop_count = 3;
   int32 maxtime_ms = 4;
   int32 fadein_ms =  5;
+  bool block = 6;
 }
 
 message PlayResponse {

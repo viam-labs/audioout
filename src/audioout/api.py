@@ -55,7 +55,7 @@ class AudiooutRPCService(AudiooutServiceBase, ResourceRPCServiceBase):
         assert request is not None
         name = request.name
         service = self.get_resource(name)
-        resp = await service.play(request.file_path, request.loop_count, request.maxtime_ms, request.fadein_ms)
+        resp = await service.play(request.file_path, request.loop_count, request.maxtime_ms, request.fadein_ms, request.block)
         await stream.send_message(PlayResponse(text=resp))
 
     async def Stop(self, stream: Stream[StopRequest, StopResponse]) -> None:
@@ -73,8 +73,8 @@ class AudiooutClient(Audioout):
         self.client = AudiooutServiceStub(channel)
         super().__init__(name)
 
-    async def play(self, file_path: str, loop_count: int, maxtime_ms: int, fadein_ms: int) -> str:
-        request = PlayRequest(name=self.name, file_path=file_path, loop_count=loop_count, maxtime_ms=maxtime_ms, fadein_ms=fadein_ms)
+    async def play(self, file_path: str, loop_count: int, maxtime_ms: int, fadein_ms: int, block: bool) -> str:
+        request = PlayRequest(name=self.name, file_path=file_path, loop_count=loop_count, maxtime_ms=maxtime_ms, fadein_ms=fadein_ms, block=block)
         response: PlayResponse = await self.client.Play(request)
         return response.text
     
