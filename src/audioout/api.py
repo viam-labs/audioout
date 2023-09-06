@@ -73,7 +73,7 @@ class AudiooutClient(Audioout):
         self.client = AudiooutServiceStub(channel)
         super().__init__(name)
 
-    async def play(self, file_path: str, loop_count: int, maxtime_ms: int, fadein_ms: int, block: bool) -> str:
+    async def play(self, file_path: str = "", loop_count: int = 0, maxtime_ms: int = 0, fadein_ms: int = 0, block: bool = False) -> str:
         request = PlayRequest(name=self.name, file_path=file_path, loop_count=loop_count, maxtime_ms=maxtime_ms, fadein_ms=fadein_ms, block=block)
         response: PlayResponse = await self.client.Play(request)
         return response.text

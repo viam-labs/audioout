@@ -22,10 +22,10 @@ The audioout resource provides the following API:
 The *play()* command takes:
 
 * file_path: The audio file on device to play
-* loop_count: How many times to play the audio file.  0 means once, -1 will loop infinitely (until stop() is called).
-* maxtime_ms: How long to play the audio for.  Note that some file types like .wav do not support time indexing so this will fail.
-* fadein_ms: If non-zero, will make the sound start playing at 0 volume and fade up to full volume over the time given. The sample may end before the fade-in is complete.
-* block: If False, will play sound async.  If true, will not return until sound is complete.
+* loop_count: How many times to play the audio file.  0 means once, -1 will loop infinitely (until stop() is called). Default 0.
+* maxtime_ms: How long to play the audio for.  0 means no maxtime. Note that some file types like .wav do not support time indexing so this will fail. Default 0.
+* fadein_ms: If non-zero, will make the sound start playing at 0 volume and fade up to full volume over the time given. The sample may end before the fade-in is complete.  Default 0.
+* block: If False, will play sound async.  If true, will not return until sound is complete.  Default False.
 
 This method returns a string response, which is the file_path that was passed in to the *play()* request.
 
