@@ -1,0 +1,14 @@
+{
+    "module_id": "viam-labs:audioout",
+    "visibility": "public",
+    "url": "https://github.com/viam-labs/audioout",
+    "description": "audioout is a Viam modular service that provides audio output capabilities for machines running on the Viam platform.",
+    "models": [
+      {
+        "api": "viam-labs:service:audioout",
+        "model": "viam-labs:audioout:pygame"
+      }
+    ],
+    "entrypoint": "run.sh"
+  }
+  
