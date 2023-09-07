@@ -37,17 +37,4 @@ If successful, will return the string "OK".
 
 ## Viam Service Configuration
 
-The following attributes may be configured as audioout service config attributes.
-
-``` json
-{
-   "mic_device_name": "myMic"
-}
-```
-
-### mic_device_name
-
-*string (default: "")*
-
-If not set, will attempt to use the first available microphone device.
-Available microphone device names will logged on module startup.
+There are currently no attributes available to configure for this module.

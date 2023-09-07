@@ -23,8 +23,6 @@ class audioout_pygame(Audioout, Reconfigurable):
     
     MODEL: ClassVar[Model] = Model(ModelFamily("viam-labs", "audioout"), "pygame")
     
-    mic_device_name: str
-
     # Constructor
     @classmethod
     def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
@@ -34,7 +32,6 @@ class audioout_pygame(Audioout, Reconfigurable):
 
     # Handles attribute reconfiguration
     def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
-        self.mic_device_name = config.attributes.fields["mic_device_name"].string_value or ""
         return
 
     async def play(self, file_path: str, loop_count: int, maxtime_ms: int, fadein_ms: int, block: bool) -> str:
