@@ -1,3 +1,5 @@
+# note - after buf generate change this line in audioout_grpc.py:
+# from . import audioout_pb2
 version: v1
 plugins:
   - name: python
