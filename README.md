@@ -37,8 +37,7 @@ If successful, will return the string "OK".
 
 ## Viam Service Configuration
 
-The following attributes may be configured as speech service config attributes.
-For example: the following configuration would set up listening mode, use an ElevenLabs voice "Antoni", make AI completions available, and use a 'Gollum' persona for AI completions:
+The following attributes may be configured as audioout service config attributes.
 
 ``` json
 {
