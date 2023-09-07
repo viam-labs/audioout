@@ -30,10 +30,10 @@ from viam.resource.rpc_service_base import ResourceRPCServiceBase
 from viam.resource.types import RESOURCE_TYPE_SERVICE, Subtype
 from viam.services.service_base import ServiceBase
 
-from ..proto.audioout_grpc import AudiooutServiceBase, AudiooutServiceStub
+from .proto.audioout_grpc import AudiooutServiceBase, AudiooutServiceStub
 
 # update the below with actual methods for your API!
-from ..proto.audioout_pb2 import PlayRequest, PlayResponse, StopRequest, StopResponse
+from .proto.audioout_pb2 import PlayRequest, PlayResponse, StopRequest, StopResponse
 
 
 class Audioout(ServiceBase):
