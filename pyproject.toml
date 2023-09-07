@@ -1,5 +1,5 @@
 [project]
-name = "viam_audioout"
+name = "audioout"
 version = "0.0.1"
 authors = [
   { name="Matt Vella", email="mcvella@gmail.com" },
