@@ -161,3 +161,4 @@ cython_debug/
 
 sounds/
 pacbot.py
+module.tar.gz
