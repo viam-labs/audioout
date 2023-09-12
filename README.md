@@ -38,3 +38,11 @@ If successful, will return the string "OK".
 ## Viam Service Configuration
 
 There are currently no attributes available to configure for this module.
+
+## Using audioout with the Python SDK
+
+Because this module uses a custom protobuf-based API, you must include this project in your client code.  One way to do this is to include it in your requirements.txt as follows:
+
+```
+audioout @ git+https://github.com/viam-labs/audioout.git@main
+```
