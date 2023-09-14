@@ -46,3 +46,11 @@ Because this module uses a custom protobuf-based API, you must include this proj
 ```
 audioout @ git+https://github.com/viam-labs/audioout.git@main
 ```
+
+You can now import and use it in your code as follows:
+
+```
+from audioout import Audioout
+ao = Audioout.from_robot(robot, name="audioout")
+ao.play(...)
+
