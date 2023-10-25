@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/usr/bin/bash
 cd `dirname $0`
 
-pip install -r requirements.txt
+source .env
+./setup.sh
 
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
-exec python3 -m src.main $@
+exec $PYTHON -m src.main $@
