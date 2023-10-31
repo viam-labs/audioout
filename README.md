@@ -6,6 +6,8 @@ The model this module makes available is viam-labs:audioout:pygame
 
 ## Prerequisites
 
+When module is running on linux, not required on Mac/Darwin
+
 ``` bash
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install python3
