@@ -26,7 +26,7 @@ async def main():
 
     ao = Audioout.from_robot(robot, name="ao")
 
-    text = await ao.play("test/munch_2.wav", 10, 0, 0)
+    text = await ao.play(os.getcwd() + "/test/munch_2.wav", 10, 0, 0)
     print(f"Played '{text}'")
     
     await robot.close()
