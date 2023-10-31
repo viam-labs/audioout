@@ -2,7 +2,7 @@
 import asyncio
 import os
 
-from src.audioout import Audioout
+from audioout_python import Audioout
 
 from viam import logging
 from viam.robot.client import RobotClient
@@ -24,7 +24,7 @@ async def main():
     print("Resources:")
     print(robot.resource_names)
 
-    ao = Audioout.from_robot(robot, name="audioout")
+    ao = Audioout.from_robot(robot, name="ao")
 
     text = await ao.play("test/munch_2.wav", 10, 0, 0)
     print(f"Played '{text}'")

@@ -1,2 +1,3 @@
 pygame==2.1.3
 viam-sdk
+audioout_api @ git+https://github.com/viam-labs/audioout-api.git@main

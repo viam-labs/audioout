@@ -1,7 +1,8 @@
 import asyncio
 
 from viam.module.module import Module
-from .audioout import Audioout, audioout_pygame
+from .audioout import audioout_pygame
+from audioout_python import Audioout
 
 async def main():
     """This function creates and starts a new module, after adding all desired resources.

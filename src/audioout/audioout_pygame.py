@@ -8,7 +8,7 @@ from viam.proto.common import ResourceName, Vector3
 from viam.resource.base import ResourceBase
 from viam.resource.types import Model, ModelFamily
 
-from .api import Audioout
+from audioout_python import Audioout
 from viam.logging import getLogger
 
 import pygame

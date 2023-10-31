@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 cd `dirname $0`
 
 source .env
@@ -6,4 +6,4 @@ source .env
 
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
-exec $PYTHON -m src.main $@
+exec "${PYTHON:-python3}" -m src.main $@
