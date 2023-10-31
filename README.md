@@ -2,6 +2,8 @@
 
 *audioout* is a Viam modular service that provides audio output capabilities via the Python [pygame mixer library](https://www.pygame.org/docs/ref/mixer.html)
 
+The model this module makes available is viam-labs:audioout:pygame
+
 ## Prerequisites
 
 ``` bash
