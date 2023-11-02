@@ -11,7 +11,7 @@ When module is running on linux, not required on Mac/Darwin
 ``` bash
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install python3
-sudo apt install python3-pip
+sudo apt install python3-pip python3-venv
 sudo apt install python3-pyaudio
 sudo apt-get install alsa-tools alsa-utils
 sudo apt-get install flac
