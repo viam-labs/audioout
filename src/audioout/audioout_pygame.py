@@ -1,5 +1,16 @@
 import os
-from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, Tuple, Final, List, cast
+from typing import (
+    ClassVar,
+    Mapping,
+    Sequence,
+    Any,
+    Dict,
+    Optional,
+    Tuple,
+    Final,
+    List,
+    cast,
+)
 from typing_extensions import Self
 
 from viam.module.types import Reconfigurable
@@ -16,8 +27,8 @@ from pygame import mixer
 
 LOGGER = getLogger(__name__)
 
+
 class audioout_pygame(Audioout, Reconfigurable):
-    
     MODEL: ClassVar[Model] = Model(ModelFamily("viam-labs", "audioout"), "pygame")
 
     bitsize: int
@@ -28,7 +39,9 @@ class audioout_pygame(Audioout, Reconfigurable):
 
     # Constructor
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
         my_class = cls(config.name)
         my_class.reconfigure(config, dependencies)
         return my_class
@@ -38,11 +51,15 @@ class audioout_pygame(Audioout, Reconfigurable):
         return []
 
     # Handles attribute reconfiguration
-    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
+    def reconfigure(
+        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ):
         self.bitsize = int(config.attributes.fields["bitsize"].number_value or -16)
         self.buffer = int(config.attributes.fields["buffer"].number_value or 1024)
         self.channels = int(config.attributes.fields["channels"].number_value or 2)
-        self.frequency = int(config.attributes.fields["frequency"].number_value or 44100)
+        self.frequency = int(
+            config.attributes.fields["frequency"].number_value or 44100
+        )
         self.volume = config.attributes.fields["default_volume"].number_value or 1.0
 
         if mixer.pre_init() is None:
@@ -55,7 +72,14 @@ class audioout_pygame(Audioout, Reconfigurable):
         mixer.quit()
         return
 
-    async def play(self, file_path: str, loop_count: int, maxtime_ms: int, fadein_ms: int, block: bool) -> str:
+    async def play(
+        self,
+        file_path: str,
+        loop_count: int,
+        maxtime_ms: int,
+        fadein_ms: int,
+        block: bool,
+    ) -> str:
         LOGGER.info("Will play audio, blocking: " + str(block))
         if mixer.pre_init() is None:
             mixer.init(self.frequency, self.bitsize, self.channels, self.buffer)
@@ -63,13 +87,13 @@ class audioout_pygame(Audioout, Reconfigurable):
 
         try:
             if os.path.isfile(file_path):
-                mixer.music.load(file_path) 
+                mixer.music.load(file_path)
                 mixer.music.play(loop_count, maxtime_ms, fadein_ms)
 
                 if block:
                     while mixer.music.get_busy():
                         pygame.time.Clock().tick()
-                        
+
                 LOGGER.info("Played audio...")
             else:
                 raise ValueError("Specified file path not found")
@@ -79,7 +103,8 @@ class audioout_pygame(Audioout, Reconfigurable):
 
     async def stop(self) -> str:
         try:
-            mixer.music.stop()
+            if mixer.pre_init() is not None:
+                mixer.music.stop()
         except RuntimeError:
             raise ValueError("Stop failure")
         return "OK"
