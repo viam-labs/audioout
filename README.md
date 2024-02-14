@@ -5,6 +5,7 @@ This modular service provides audio output capabilities via the Python [pygame m
 
 ## Requirements
 
+No prerequisite action is needed for Mac/Darwin.
 If you want to run this module on a Linux-based machine, install prerequisites with the following commands:
 
 ``` bash
@@ -70,10 +71,10 @@ Follow the instructions in [Using Audioout-api with the Python SDK](https://gith
 
 ## Troubleshooting
 
-When using a USB audio device, it may sometimes come up as the default, sometimes not.
-To ensure that it comes up consistently as the default:
+When using a USB audio device, the device may not be registered as the default audio device on boot.
+To configure your USB device as the default audio device:
 
-1. check the existing alsa modules:
+1. Verify the existing `alsa` modules:
 
 ```
 cat /proc/asound/modules
@@ -87,8 +88,7 @@ This will output something like:
  3 snd_usb_audio
 ```
 
-2. Ensure the USB device comes up first by editing /etc/modprobe.d/alsa-base.conf. 
-Add content similar to:
+2. Edit <file>/etc/modprobe.d/alsa-base.conf</file> to add content similar to:
 
 ```
 options snd slots=snd-usb-audio,snd_soc_meson_card_utils
