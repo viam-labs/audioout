@@ -9,7 +9,7 @@ async def main():
     Resources must be pre-registered. For an example, see the `__init__.py` file.
     """
     module = Module.from_args()
-    module.add_model_from_registry(Audioout.SUBTYPE, audioout_pygame.MODEL)
+    module.add_model_from_registry(Audioout.API, audioout_pygame.MODEL)
     await module.start()
 
 if __name__ == "__main__":
